@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="@layout/activity_main">
+
+    <group android:checkableBehavior="none">
+
+        <item
+            android:id="@+id/nav_recycler_and_swipe_refresh"
+            android:icon="@drawable/nav_recycler_view"
+            android:title="@string/nav_recycler_view" />
+        <item
+            android:id="@+id/nav_scrolling"
+            android:icon="@drawable/nav_srolling"
+            android:title="@string/nav_scrolling" />
+        <item
+            android:id="@+id/nav_bottom_navigation"
+            android:icon="@drawable/nav_bottom_navigation"
+            android:title="@string/nav_bottom_navigation" />
+        <item
+            android:id="@+id/nav_bottom_app_bar"
+            android:icon="@drawable/nav_bottom_app_bar"
+            android:title="@string/bottom_app_bar" />
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/nav_setting"
+            android:title="@string/nav_settings" />
+
+    </group>
+
+    <group android:id="@+id/group_about">
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/nav_about"
+            android:title="@string/nav_about" />
+        <item
+            android:id="@+id/nav_donate"
+            android:icon="@drawable/nav_donations"
+            android:title="@string/nav_donations" />
+        <item
+            android:id="@+id/nav_myapps"
+            android:icon="@drawable/nav_my_apps"
+            android:title="@string/nav_my_apps" />
+    </group>
+</menu>

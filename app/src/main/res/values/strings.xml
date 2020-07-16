@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">MaterialDesignTest</string>
+    <string name="welcone_to_my_app">Welcone to my app</string>
+    <string name="nav_about">About</string>
+    <string name="nav_donations">Donations</string>
+    <string name="nav_my_apps">My Apps</string>
+    <string name="nav_recycler_view">Recycler View</string>
+    <string name="nav_scrolling">Scrolling</string>
+    <string name="nav_bottom_navigation">Bottom Navigation</string>
+    <string name="bottom_app_bar">Bottom App Bar</string>
+    <string name="nav_settings">Settings</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="image">image</string>
+    <string name="title_is_here">Title 2020 詰め</string>
+    <string name="subtitle_here">Subtitle 2020年</string>
+    <string name="action_1">Action 1</string>
+    <string name="action_2">Action 2</string>
+    <string name="single_choice_dialog">Single Choice dialog</string>
+    <string name="multi_choice_dialog">multi_choice_dialog</string>
+    <string name="progress_dialog">Progress_dialog</string>
+    <string name="data_picker_dialog">data_picker_dialog</string>
+    <string name="time_picker_dialog">time_picker_dialog</string>
+    <string name="bottom_dialog">bottom_dialog</string>
+    <string name="fullscreen_dialog">fullscreen_dialog</string>
+    <string name="popup_menu">popup_menu</string>
+    <string name="action_3">Action 3</string>
+    <string name="action_4">Action 4</string>
+    <string name="action_5">Action 5</string>
+    <string name="action_6">Action 6</string>
+    <string name="toggle_button">Toggle Button</string>
+    <string name="a">A</string>
+    <string name="b">B</string>
+    <string name="c">C</string>
+    <string name="d">D</string>
+    <string name="button_toggle_group">Button Toggle Group</string>
+    <string name="chips">Chips</string>
+    <string name="filter_chip">Filter Chip</string>
+    <string name="checkable">Checkable</string>
+    <string name="corner_radius">Corner Radius</string>
+    <string name="stroke">Stroke</string>
+    <string name="chip_icon">Chip Icon</string>
+    <string name="close_icon">Close Icon</string>
+    <string name="spinner">Spinner</string>
+</resources>
