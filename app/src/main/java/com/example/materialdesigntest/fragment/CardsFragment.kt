@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.cardview.widget.CardView
+import com.example.materialdesigntest.MyApplication
 import com.example.materialdesigntest.R
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.card_1.*
@@ -36,8 +37,8 @@ class CardsFragment : Fragment() {
     }
 
     private fun cardOnAction() {
+        val context = context ?: return
         btn_card_1_action1.setOnClickListener {
-            context?.let { context ->
                 AlertDialog.Builder(context).apply {
                     setTitle("This is Dialog")
                     setMessage("Something important.")
@@ -53,9 +54,6 @@ class CardsFragment : Fragment() {
                     }
                     show()
                 }
-
-            }
-//            Snackbar.make(it,"Card_1 Action1", Snackbar.LENGTH_SHORT).show()
         }
         btn_card_1_action2.setOnClickListener {
             Snackbar.make(it, "Card_1 Action2", Snackbar.LENGTH_SHORT).show()

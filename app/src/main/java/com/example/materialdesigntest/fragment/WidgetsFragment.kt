@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import com.example.materialdesigntest.MyApplication
 import com.example.materialdesigntest.R
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_widgets.*

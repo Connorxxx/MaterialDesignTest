@@ -14,6 +14,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
+import com.example.materialdesigntest.MyApplication
 import com.example.materialdesigntest.R
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.snackbar.Snackbar
@@ -45,7 +46,7 @@ class DialogsFragment : Fragment() {
     }
 
     private fun initBtnDialog() {
-        val context = this.context ?: return
+        val context = context ?: return
         btn_dialog_1.setOnClickListener {
             val singleChoiceItems = resources
                 .getStringArray(R.array.dialog_choice_array)

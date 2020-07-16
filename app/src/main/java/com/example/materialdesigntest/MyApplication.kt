@@ -1,5 +1,6 @@
 package com.example.materialdesigntest
 
+import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
 import android.os.AsyncTask
@@ -11,7 +12,7 @@ class MyApplication : Application() {
         fun getApplication(): MyApplication {
             return instance
         }
-
+        @SuppressLint("StaticFiledLeak")
         lateinit var context: Context
         lateinit var instance: MyApplication
         lateinit var mExecutor: Executor
