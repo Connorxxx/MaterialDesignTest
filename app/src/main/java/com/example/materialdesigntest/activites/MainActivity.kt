@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         initDrawerLayout()
         initTabLayoutWithViewPager2()
         initFab()
+        //Test Commit...
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
