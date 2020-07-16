@@ -19,6 +19,25 @@
             app:layout_scrollFlags="scroll|enterAlways|snap"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
+            <EditText
+                android:id="@+id/searchPlaceEdit"
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/round_corners_bg"
+                android:focusable="true"
+                android:hint="@string/input_text"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:textColor="@color/gray_deep"
+                android:textColorHint="@color/gray_deep"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
         </androidx.appcompat.widget.Toolbar>
 
         <com.google.android.material.tabs.TabLayout

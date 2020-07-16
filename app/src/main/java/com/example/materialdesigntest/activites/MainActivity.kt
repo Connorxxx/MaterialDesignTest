@@ -1,13 +1,17 @@
 package com.example.materialdesigntest.activites
 
+import android.content.Context
+import android.content.Context.INPUT_METHOD_SERVICE
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.os.HandlerCompat.postDelayed
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -48,8 +52,27 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_menu_main_about -> Toast.makeText(this,
-                "About", Toast.LENGTH_SHORT).show()
+            R.id.action_menu_main_about -> {
+                searchPlaceEdit.apply {
+                    val imm = searchPlaceEdit.context
+                        .getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    if (visibility == View.GONE) {
+                        visibility = View.VISIBLE
+                        requestFocus()
+                        postDelayed({
+                            kotlin.run {
+                                imm.showSoftInput(searchPlaceEdit, 0)
+                            }
+                        }, 100)
+                    } else {
+                        visibility = View.GONE
+                        imm.hideSoftInputFromWindow(this.windowToken, 0)
+                    }
+                }
+
+
+
+            }
             R.id.action_menu_main_donations -> Toast.makeText(this,
                 "Donations", Toast.LENGTH_SHORT).show()
             R.id.action_menu_main_my_app -> Toast.makeText(this,

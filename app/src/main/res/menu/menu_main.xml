@@ -4,8 +4,9 @@
 
     <item
         android:id="@+id/action_menu_main_about"
+        android:icon="@drawable/menu_search"
         android:title="@string/nav_about"
-        app:showAsAction="never" />
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_menu_main_donations"
         android:title="@string/nav_donations"
