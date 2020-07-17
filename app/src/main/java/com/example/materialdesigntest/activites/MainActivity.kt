@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -31,8 +32,9 @@ import kotlinx.android.synthetic.main.nav_header_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var drawer: DrawerLayout
+    private lateinit var drawer: DrawerLayout
     lateinit var fab: FloatingActionButton
+    private lateinit var imm: InputMethodManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,24 +56,14 @@ class MainActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.action_menu_main_about -> {
                 searchPlaceEdit.apply {
-                    val imm = searchPlaceEdit.context
-                        .getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                     if (visibility == View.GONE) {
                         visibility = View.VISIBLE
-                        requestFocus()
-                        postDelayed({
-                            kotlin.run {
-                                imm.showSoftInput(searchPlaceEdit, 0)
-                            }
-                        }, 100)
+                        showKeyboard(this)
                     } else {
-                        visibility = View.GONE
-                        imm.hideSoftInputFromWindow(this.windowToken, 0)
+                        onClickedSearchWithText()
                     }
                 }
-
-
-
+                actionDone()
             }
             R.id.action_menu_main_donations -> Toast.makeText(this,
                 "Donations", Toast.LENGTH_SHORT).show()
@@ -81,12 +73,55 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    private fun onClickedSearchWithText() {
+        val text = searchPlaceEdit.text
+        if (text.isEmpty()) {
+            Toast.makeText(this, "请输入地址", Toast.LENGTH_SHORT).show()
+        } else {
+            hideKeyboard(searchPlaceEdit)
+            Snackbar.make(
+                searchPlaceEdit, "you input $text",
+                Snackbar.LENGTH_LONG
+            ).show()
+            searchPlaceEdit.setText("")
+        }
+    }
+
+    private fun actionDone() {
+        searchPlaceEdit.setOnEditorActionListener { v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                onClickedSearchWithText()
+            }
+            return@setOnEditorActionListener false
+        }
+    }
+
     override fun onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
+        if (drawer.isDrawerOpen(GravityCompat.START) or (searchPlaceEdit.visibility == View.VISIBLE)) {
             drawer.closeDrawer(GravityCompat.START)
+            searchPlaceEdit.visibility = View.GONE
         } else {
             super.onBackPressed()
         }
+    }
+
+    private fun showKeyboard(view: View) {
+        imm = searchPlaceEdit.context
+            .getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        searchPlaceEdit.apply {
+            requestFocus()
+            postDelayed({
+                kotlin.run {
+                    imm.showSoftInput(view, 0)
+                }
+            }, 100)
+        }
+    }
+
+    private fun hideKeyboard(view: View) {
+        imm = searchPlaceEdit.context
+            .getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
     private fun initFab() {
