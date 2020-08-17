@@ -45,4 +45,9 @@
     <string name="close_icon">Close Icon</string>
     <string name="spinner">Spinner</string>
     <string name="input_text">Input Text</string>
+    <string name="extended_fab">Extended Fab</string>
+    <string name="tv_recycler_item_1">Swipe down to refresh</string>
+    <string name="tv_recycler_item_2">Swipe left or right to dismiss it</string>
+    <string name="tv_recycler_item_3">Drag up or down to move it</string>
+    <string name="header">HEADER</string>
 </resources>

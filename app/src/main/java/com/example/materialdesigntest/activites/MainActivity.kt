@@ -1,7 +1,7 @@
 package com.example.materialdesigntest.activites
 
 import android.content.Context
-import android.content.Context.INPUT_METHOD_SERVICE
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -12,7 +12,6 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.os.HandlerCompat.postDelayed
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -28,7 +27,6 @@ import com.google.android.material.tabs.TabLayoutMediator
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
-import kotlinx.android.synthetic.main.nav_header_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -44,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         initDrawerLayout()
         initTabLayoutWithViewPager2()
         initFab()
+        initNavigationItemSelected()
         //Test Commit....
     }
 
@@ -65,12 +64,27 @@ class MainActivity : AppCompatActivity() {
                 }
                 actionDone()
             }
-            R.id.action_menu_main_donations -> Toast.makeText(this,
-                "Donations", Toast.LENGTH_SHORT).show()
-            R.id.action_menu_main_my_app -> Toast.makeText(this,
-                "My Apps", Toast.LENGTH_SHORT).show()
+            R.id.action_menu_main_donations -> Toast.makeText(
+                this,
+                "Donations", Toast.LENGTH_SHORT
+            ).show()
+            R.id.action_menu_main_my_app -> Toast.makeText(
+                this,
+                "My Apps", Toast.LENGTH_SHORT
+            ).show()
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        if (drawer.isDrawerOpen(GravityCompat.START) or
+            (searchPlaceEdit.visibility == View.VISIBLE)
+        ) {
+            drawer.closeDrawer(GravityCompat.START)
+            searchPlaceEdit.visibility = View.GONE
+        } else {
+            super.onBackPressed()
+        }
     }
 
     private fun onClickedSearchWithText() {
@@ -93,15 +107,6 @@ class MainActivity : AppCompatActivity() {
                 onClickedSearchWithText()
             }
             return@setOnEditorActionListener false
-        }
-    }
-
-    override fun onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START) or (searchPlaceEdit.visibility == View.VISIBLE)) {
-            drawer.closeDrawer(GravityCompat.START)
-            searchPlaceEdit.visibility = View.GONE
-        } else {
-            super.onBackPressed()
         }
     }
 
@@ -151,7 +156,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun initDrawerLayout() {
         drawer = drawer_layout
-        val toggle =  ActionBarDrawerToggle(this, drawer, toolbar,
+        val toggle = ActionBarDrawerToggle(
+            this, drawer, toolbar,
             R.string.navigation_drawer_open,
             R.string.navigation_drawer_close
         )
@@ -184,7 +190,7 @@ class MainActivity : AppCompatActivity() {
         }.attach()
 
         view_pager_main.registerOnPageChangeCallback(
-            object : ViewPager2.OnPageChangeCallback () {
+            object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageScrollStateChanged(state: Int) {
                     super.onPageScrollStateChanged(state)
                 }
@@ -205,5 +211,18 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             })
+    }
+
+    private fun initNavigationItemSelected() {
+        val intent = Intent()
+        nav_view.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.nav_recycler_and_swipe_refresh -> {
+                    intent.setClass(this, RecyclerViewActivity::class.java)
+                    startActivity(intent)
+                }
+            }
+            true
+        }
     }
 }
