@@ -1,8 +1,6 @@
 package com.example.materialdesigntest.activites
 
 import android.os.Bundle
-import android.os.Handler
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView

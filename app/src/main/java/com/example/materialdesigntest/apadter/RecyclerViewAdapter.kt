@@ -12,8 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.materialdesigntest.R
 import com.example.materialdesigntest.view.MoveAndSwipedListener
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.item_recycler_footer.view.*
-import kotlinx.android.synthetic.main.item_recycler_header.view.*
 import kotlinx.android.synthetic.main.item_recycler_view.view.*
 import java.util.*
 import kotlin.collections.ArrayList
@@ -21,7 +19,7 @@ import kotlin.collections.ArrayList
 class RecyclerViewAdapter(val context: Context) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>(), MoveAndSwipedListener {
 
-    val itemList = ArrayList<String>()
+    private val itemList = ArrayList<String>()
 
     private val typeNormal = 1
     private val typeFooter = 2
@@ -29,7 +27,7 @@ class RecyclerViewAdapter(val context: Context) :
     private val footer = "footer"
     private val header = "header"
 
-    lateinit var parentView: View
+    private lateinit var parentView: View
 
     var color: Int = 0
 
@@ -74,11 +72,11 @@ class RecyclerViewAdapter(val context: Context) :
     }
 
     inner class HeaderViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val headerText = view.headerText
+        //val headerText = view.headerText
     }
 
     inner class FooterViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val progress = view.progressBarLoadMore
+       // val progress = view.progressBarLoadMore
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

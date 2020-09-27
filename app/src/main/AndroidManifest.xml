@@ -10,8 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activites.ShareViewActivity"></activity>
-        <activity android:name=".activites.RecyclerViewActivity"></activity>
+        <activity android:name=".activites.BottomNavigationActivity"></activity>
+        <activity android:name=".activites.ShareViewActivity" />
+        <activity android:name=".activites.RecyclerViewActivity" />
         <activity
             android:name=".activites.MainActivity"
             android:theme="@style/AppTheme.NoActionBar.TransparentStatus">

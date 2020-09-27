@@ -221,6 +221,10 @@ class MainActivity : AppCompatActivity() {
                     intent.setClass(this, RecyclerViewActivity::class.java)
                     startActivity(intent)
                 }
+                R.id.nav_bottom_navigation -> {
+                    intent.setClass(this, BottomNavigationActivity::class.java)
+                    startActivity(intent)
+                }
             }
             true
         }
